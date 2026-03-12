@@ -21,6 +21,7 @@ export interface AiEquation {
 export class AppComponent implements OnInit {
   isDarkMode = true;
   activeTab: 'table' | 'equations' = 'table';
+  repoUrl = 'https://github.com/harshdotcom/ai-periodic-table';
 
   // Define the grid structure: 4 rows, 5 columns
   grid: (AiElement | null)[][] = [];

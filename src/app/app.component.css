@@ -80,11 +80,12 @@
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px 24px 48px;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   /* User requested full height and bg to fix bug */
-  height: 100vh;
+  min-height: 100vh;
   transition: background-color 0.3s ease;
 }
 
@@ -97,6 +98,7 @@
   grid-template-rows: 80px repeat(4, 120px);
   gap: 15px; /* Spacing between cells */
   margin-top: 10px; /* Instead of 30px padding on header, keep small gap */
+  align-self: center;
 }
 
 /* Header Cells (Groups) */
@@ -241,14 +243,22 @@ app-element {
   .group-num { font-size: 1.1rem; }
   .row-num { font-size: 0.9rem; }
   .group-name, .row-name { font-size: 0.6rem; }
+  .header-container { padding: 0 20px; }
 }
 
 @media (max-width: 600px) {
+  .container {
+    padding: 16px 12px 32px;
+  }
+
   .periodic-table {
     grid-template-columns: 60px repeat(5, 70px);
     grid-template-rows: 50px repeat(4, 70px);
     gap: 6px;
     padding: 5px;
   }
-  .header-container { flex-direction: column; gap: 10px; }
+  .header-container {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

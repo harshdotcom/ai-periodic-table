@@ -95,7 +95,26 @@
       </div>
     </ng-container>
 
-  </div>
+    </div>
+
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Open source map of the AI stack</p>
+        <h1>Browse AI building blocks like a living periodic table.</h1>
+        <p class="hero-text">
+          Explore primitives, retrieval, orchestration, validation, and model patterns, then jump into recipes built from the same components.
+        </p>
+      </div>
+
+      <aside class="repo-card">
+        <p class="repo-label">Repository</p>
+        <a class="repo-link" [href]="repoUrl" target="_blank" rel="noopener noreferrer">
+          harshdotcom/ai-periodic-table
+        </a>
+        <p class="repo-text">Star the repo, fork it, or use it as a base for your own AI systems explorer.</p>
+        <a class="repo-button" [href]="repoUrl" target="_blank" rel="noopener noreferrer">Open Repository</a>
+      </aside>
+    </section>
   </div>
 
   <app-equations *ngIf="activeTab === 'equations'" [equations]="equations"></app-equations>
