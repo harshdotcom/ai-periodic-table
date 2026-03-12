@@ -1,0 +1,103 @@
+<header class="app-header">
+  <div class="header-container">
+    <div class="logo">
+      <span>AI</span> <span class="logo-accent">Periodic Table</span>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab" [class.active]="activeTab === 'table'" (click)="setActiveTab('table')">Periodic Table</button>
+      <button class="nav-tab" [class.active]="activeTab === 'equations'" (click)="setActiveTab('equations')">AI Recipes</button>
+    </div>
+
+    <div class="header-actions">
+      <a href="https://github.com/harshdotcom" target="_blank" rel="noopener noreferrer" class="github-link" title="Star on GitHub">
+        <svg height="24" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
+          <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+        </svg>
+      </a>
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="'Toggle Theme'">
+        <span *ngIf="isDarkMode" class="icon" aria-hidden="true">☀️</span>
+        <span *ngIf="!isDarkMode" class="icon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="periodic-table-wrapper" *ngIf="activeTab === 'table'">
+    <div class="periodic-table">
+    
+    <!-- Header Row (Groups) -->
+    <div class="table-header empty-corner"></div>
+    <div class="table-header group-header text-secondary group-reactive-label">
+      <div class="group-num">G1</div>
+      <div class="group-name">REACTIVE</div>
+    </div>
+    <div class="table-header group-header text-secondary group-retrieval-label">
+      <div class="group-num">G2</div>
+      <div class="group-name">RETRIEVAL</div>
+    </div>
+    <div class="table-header group-header text-secondary group-orchestration-label">
+      <div class="group-num">G3</div>
+      <div class="group-name">ORCHES.</div>
+    </div>
+    <div class="table-header group-header text-secondary group-validation-label">
+      <div class="group-num">G4</div>
+      <div class="group-name">VALID.</div>
+    </div>
+    <div class="table-header group-header text-secondary group-models-label">
+      <div class="group-num">G5</div>
+      <div class="group-name">MODELS</div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="table-row-label text-secondary">
+      <div class="row-num">Row 1</div>
+      <div class="row-name">PRIMITIVES</div>
+    </div>
+    <ng-container *ngFor="let cell of grid[0]">
+      <div class="cell-wrapper" [class.has-content]="cell">
+        <app-element [element]="cell"></app-element>
+      </div>
+    </ng-container>
+
+    <!-- Row 2 -->
+    <div class="table-row-label text-secondary">
+      <div class="row-num">Row 2</div>
+      <div class="row-name">COMPOSITIONS</div>
+    </div>
+    <ng-container *ngFor="let cell of grid[1]">
+      <div class="cell-wrapper" [class.has-content]="cell">
+        <app-element [element]="cell"></app-element>
+      </div>
+    </ng-container>
+
+    <!-- Row 3 -->
+    <div class="table-row-label text-secondary">
+      <div class="row-num">Row 3</div>
+      <div class="row-name">DEPLOYMENT</div>
+    </div>
+    <ng-container *ngFor="let cell of grid[2]">
+      <div class="cell-wrapper" [class.has-content]="cell">
+        <app-element [element]="cell"></app-element>
+      </div>
+    </ng-container>
+
+    <!-- Row 4 -->
+    <div class="table-row-label text-secondary">
+      <div class="row-num">Row 4</div>
+      <div class="row-name">EMERGING</div>
+    </div>
+    <ng-container *ngFor="let cell of grid[3]">
+      <div class="cell-wrapper" [class.has-content]="cell">
+        <app-element [element]="cell"></app-element>
+      </div>
+    </ng-container>
+
+  </div>
+  </div>
+
+  <app-equations *ngIf="activeTab === 'equations'" [equations]="equations"></app-equations>
+
+</main>

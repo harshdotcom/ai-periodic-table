@@ -1,0 +1,141 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.element-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  /* Top border reserved for category color */
+  border-top-width: 4px;
+}
+
+[data-theme='dark'] .element-card {
+  border: 1px solid var(--border-color);
+  border-top-width: 4px;
+  background-color: #0f172a;
+}
+
+.element-card.empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Group Colors */
+.group-reactive { border-top-color: var(--color-reactive); }
+.group-retrieval { border-top-color: var(--color-retrieval); }
+.group-orchestration { border-top-color: var(--color-orchestration); }
+.group-validation { border-top-color: var(--color-validation); }
+.group-models { border-top-color: var(--color-models); }
+
+/* Apply group color to symbol */
+.group-reactive .symbol { color: var(--color-reactive); }
+.group-retrieval .symbol { color: var(--color-retrieval); }
+.group-orchestration .symbol { color: var(--color-orchestration); }
+.group-validation .symbol { color: var(--color-validation); }
+.group-models .symbol { color: var(--color-models); }
+
+.symbol {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  transition: transform 0.3s ease;
+}
+
+.name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 6px;
+  transition: transform 0.3s ease;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+/* Small Size Modifier for Equations */
+.element-card.size-small {
+  padding: 5px;
+  border-top-width: 3px;
+}
+
+.element-card.size-small .symbol {
+  font-size: 1.4rem;
+}
+
+.element-card.size-small .name {
+  font-size: 0.65rem;
+  margin-top: 2px;
+}
+
+/* Hover Reaction */
+.element-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  border-color: var(--border-color);
+}
+
+.element-card:hover .symbol {
+  transform: scale(1.1);
+}
+
+/* Active State (Click Reaction) */
+.element-card.active {
+  transform: scale(1.05);
+  z-index: 20;
+  box-shadow: var(--shadow-lg);
+}
+
+.reaction-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  text-align: center;
+  border-radius: inherit;
+  border-top-width: 4px;
+  border-top-style: solid;
+  border-top-color: inherit;
+  animation: fadeIn 0.2s forwards;
+  color: var(--text-primary);
+  z-index: 5;
+}
+
+/* Inherit top border for reaction layer */
+.group-reactive .reaction-layer { border-top-color: var(--color-reactive); }
+.group-retrieval .reaction-layer { border-top-color: var(--color-retrieval); }
+.group-orchestration .reaction-layer { border-top-color: var(--color-orchestration); }
+.group-validation .reaction-layer { border-top-color: var(--color-validation); }
+.group-models .reaction-layer { border-top-color: var(--color-models); }
+
+.reaction-layer .desc {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

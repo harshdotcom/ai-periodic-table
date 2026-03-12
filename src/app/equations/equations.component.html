@@ -1,0 +1,35 @@
+<div class="equations-section">
+  <div class="equations-header">
+    <h2 class="equations-title">AI Application Recipes & Architectures</h2>
+    <p class="equations-subtitle text-secondary">Explore 20 different ways to combine periodic elements to build modern AI solutions.</p>
+  </div>
+  
+  <div class="equations-grid">
+    <div class="equation-card" *ngFor="let eq of equations">
+      <div class="eq-info">
+        <div class="eq-badge">{{ eq.architectureLayer }}</div>
+        <h3 class="eq-name">{{ eq.name }}</h3>
+        <p class="eq-desc text-secondary">{{ eq.description }}</p>
+      </div>
+      
+      <div class="eq-formula">
+        <ng-container *ngFor="let element of eq.ingredients; let isLast = last">
+          <div class="eq-element-wrapper">
+            <app-element [element]="element" size="small"></app-element>
+          </div>
+          <div class="eq-operator" *ngIf="!isLast">+</div>
+        </ng-container>
+        
+        <div class="eq-operator eq-yields">
+          <svg viewBox="0 0 24 24" fill="none" class="arrow-icon">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        
+        <div class="eq-result">
+          <div class="result-icon">✨</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
